@@ -64,37 +64,22 @@
     function test_Box_draw(t) {
         t.plan( 5 );
 
-        OpenLayers.Util._modifyDOMElement = 
-            OpenLayers.Util.modifyDOMElement;
-        OpenLayers.Util.modifyDOMElement = 
-            function (element, id, px, sz) {
-                g_Element = element;
-                g_Id = id;
-                g_Px = px;
-                g_Sz = sz;
-            };
+        var bounds = new OpenLayers.Bounds(1,2,3,4);
+        var borderColor = "blue";
+        var borderWidth = 55;
 
-        var box = {
-            div: {}
-        };
+        box = new OpenLayers.Marker.Box(bounds, borderColor, borderWidth);
 
-        
-        var px = {};
-        var sz = {};
-        var args = [px, sz];
+        var px = new OpenLayers.Pixel(5,5);
+        var sz = new OpenLayers.Size(10,10);
 
-        g_Element = g_Id = g_Px = g_Sz = null;
-        var retVal = OpenLayers.Marker.Box.prototype.draw.apply(box, args);
+        var div = box.draw(px, sz);
 
-        t.eq(g_Element, box.div, "modifyDOMElement passes box's div for element");
-        t.eq(g_Id, null, "modifyDOMElement passes null for id");
-        t.eq(g_Px, px, "modifyDOMElement passes new px value for px");
-        t.eq(g_Sz, sz, "modifyDOMElement passes new sz value for sz");
-        t.ok(retVal == box.div, "draw returns box's div");
-
-        OpenLayers.Util.modifyDOMElement = 
-            OpenLayers.Util._modifyDOMElement;
-
+        t.eq(box.div.id, div.id, "div id didn't change during draw");
+        t.eq(box.div.style.width, sz.w + "px", "div.style.width set correctly");
+        t.eq(box.div.style.height, sz.h + "px", "div.style.height set correctly");
+        t.eq(box.div.style.left, px.x + "px", "div.style.left set correctly");
+        t.eq(box.div.style.top, px.y + "px", "div.style.top set correctly");
     }
 
     function test_Box_onScreen(t) {
