@@ -50,10 +50,11 @@
     }
     
     function test_Util_pagePosition(t) {
-        t.plan( 1 );
-        var pp = OpenLayers.Util.pagePosition(window);
-        t.eq( pp.toString(), "0,0", "Page position doesn't bail if passed 'window'")
-        
+        t.plan( 2 );
+        var px = OpenLayers.Util.pagePosition(window);
+
+        t.eq( 0, px.x, "Page position doesn't bail if passed 'window'");
+        t.eq( 0, px.y, "Page position doesn't bail if passed 'window'");        
     }
 
     function test_Util_createDiv(t) {

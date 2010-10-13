@@ -28,6 +28,14 @@
         t.eq( pixel.toString(), "x=5,y=6", "pixel.toString() returns correctly");
     }
 
+    function test_Pixel_toArray(t) {
+        t.plan( 2 );
+        pixel = new OpenLayers.Pixel(5,6);
+        myArray = pixel.toArray();
+        t.eq( myArray[0], 5, "pixel.toArray() returns x value correctly");
+        t.eq( myArray[1], 6, "pixel.toArray() returns y value correctly");
+    }
+
     function test_Pixel_clone(t) {
         t.plan( 4 );
         oldPixel = new OpenLayers.Pixel(5,6);

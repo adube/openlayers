@@ -33,8 +33,8 @@
             var viewportPosition = OpenLayers.Util.pagePosition(viewport);
             e.xy = events.getMousePosition(e);
             var from = {
-                x: blockPosition[0] - viewportPosition[0],
-                y: blockPosition[1] - viewportPosition[1]
+                x: blockPosition.x - viewportPosition.x,
+                y: blockPosition.y - viewportPosition.y
             };
             var to = {
                 x: e.xy.x,
@@ -43,8 +43,8 @@
             var duration = OpenLayers.Util.getElement('duration').value;
             var callbacks = {
                 eachStep: function(value) {
-                    block.style.left = (value.x + viewportPosition[0]) + 'px';
-                    block.style.top = (value.y + viewportPosition[1]) + 'px';
+                    block.style.left = (value.x + viewportPosition.x) + 'px';
+                    block.style.top = (value.y + viewportPosition.y) + 'px';
                 }
             }
             tween.start(from, to, duration, {callbacks: callbacks});
