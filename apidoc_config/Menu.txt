@@ -306,7 +306,6 @@ Group: OpenLayers  {
       File: EventPane  (no auto-title, OpenLayers/Layer/EventPane.js)
       File: FixedZoomLevels  (no auto-title, OpenLayers/Layer/FixedZoomLevels.js)
       File: GeoRSS  (no auto-title, OpenLayers/Layer/GeoRSS.js)
-      File: GML  (no auto-title, OpenLayers/Layer/GML.js)
       File: Google  (no auto-title, OpenLayers/Layer/Google.js)
       File: Grid  (no auto-title, OpenLayers/Layer/Grid.js)
       File: HTTPRequest  (no auto-title, OpenLayers/Layer/HTTPRequest.js)

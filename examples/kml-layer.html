@@ -7,24 +7,35 @@
         var lon = 5;
         var lat = 40;
         var zoom = 5;
-        var map, layer;
+        var map, layer, kml;
 
         function init(){
             map = new OpenLayers.Map('map');
             layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
                     "http://vmap0.tiles.osgeo.org/wms/vmap0", {layers: 'basic'} );
-            map.addLayer(layer);
-            map.addLayer(new OpenLayers.Layer.GML("KML", "kml/lines.kml", 
-               {
-                format: OpenLayers.Format.KML, 
-                formatOptions: {
-                  extractStyles: true, 
-                  extractAttributes: true,
-                  maxDepth: 2
-                }
-               }));
+            kml = new OpenLayers.Layer.Vector("KML");
+
+
+            map.addLayers([layer,kml]);
+            map.addControl(new OpenLayers.Control.LayerSwitcher())
+
             map.zoomToExtent(new OpenLayers.Bounds(-112.306698,36.017792,-112.03204,36.18087));
+
+            var url = "kml/lines.kml";
+            OpenLayers.loadURL(url, null, null, loadSuccess);
         }
+
+        function loadSuccess(request) {
+            var format = new OpenLayers.Format.KML({
+                extractStyles: true, 
+                extractAttributes: true,
+                maxDepth: 2
+            });
+
+            var features = format.read(request.responseText);
+            kml.addFeatures(features);
+        }
+
     </script>
   </head>
   <body onload="init()">

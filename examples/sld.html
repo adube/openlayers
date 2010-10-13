@@ -39,9 +39,8 @@
 
             gmlLayers = [
                 // use the sld UserStyle named "Default Styler"
-                new OpenLayers.Layer.GML(
+                new OpenLayers.Layer.Vector(
                     "StateBoundaries",
-                    "tasmania/TasmaniaStateBoundaries.xml",
                     {
                         styleMap: new OpenLayers.StyleMap(
                             getDefaultStyle(sld, "Land")
@@ -49,14 +48,12 @@
                         isBaseLayer: true
                     }
                 ),
-                new OpenLayers.Layer.GML(
+                new OpenLayers.Layer.Vector(
                     "Roads",
-                    "tasmania/TasmaniaRoads.xml",
                     {styleMap: new OpenLayers.StyleMap(getDefaultStyle(sld, "Roads"))}
                 ),
-                new OpenLayers.Layer.GML(
+                new OpenLayers.Layer.Vector(
                     "WaterBodies",
-                    "tasmania/TasmaniaWaterBodies.xml",
                     {
                         styleMap: new OpenLayers.StyleMap({
                             "default": getDefaultStyle(sld, "WaterBodies"),
@@ -64,9 +61,8 @@
                         })
                     }
                 ),
-                new OpenLayers.Layer.GML(
+                new OpenLayers.Layer.Vector(
                     "Cities",
-                    "tasmania/TasmaniaCities.xml",
                     {styleMap: new OpenLayers.StyleMap(getDefaultStyle(sld, "Cities"))}
                 )
             ];
@@ -79,6 +75,18 @@
             );
             map.addControl(hover);
             hover.activate();
+
+            var url = "tasmania/TasmaniaStateBoundaries.xml";
+            OpenLayers.loadURL(url, null, gmlLayers[0], loadSuccess);
+
+            var url = "tasmania/TasmaniaRoads.xml";
+            OpenLayers.loadURL(url, null, gmlLayers[1], loadSuccess);
+
+            var url = "tasmania/TasmaniaWaterBodies.xml";
+            OpenLayers.loadURL(url, null, gmlLayers[2], loadSuccess);
+
+            var url = "tasmania/TasmaniaCities.xml";
+            OpenLayers.loadURL(url, null, gmlLayers[3], loadSuccess);
         }
         
         // set a new style when the radio button changes
@@ -87,6 +95,11 @@
             // change the style of the features of the WaterBodies layer
             gmlLayers[2].redraw();
         }
+
+        function loadSuccess(request){
+            this.addFeatures(new OpenLayers.Format.GML().read(request.responseText));
+        };
+
     </script>
   </head>
   <body onload="init()">

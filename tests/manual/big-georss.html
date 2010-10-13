@@ -8,7 +8,7 @@
         var lon = 5;
         var lat = 40;
         var zoom = 5;
-        var map, layer;
+        var map, layer, vector;
 
         function init(){
             map = new OpenLayers.Map('map');
@@ -16,8 +16,20 @@
                     "http://labs.metacarta.com/wms/vmap0", {layers: 'basic'} );
             map.addLayer(layer);
             map.zoomToExtent(new OpenLayers.Bounds(-94.617035,33.010025,-89.645401,36.492752));
-            map.addLayer(new OpenLayers.Layer.GML("GML", "arkansas.rss", {format: OpenLayers.Format.GeoRSS}));
+
+            vector = new OpenLayers.Layer.Vector("Vector");
+            map.addLayer(vector);
+
+            var url = "arkansas.rss";
+            OpenLayers.loadURL(url, null, vector, loadSuccess);
         }
+
+        function loadSuccess(request){
+            var format = new OpenLayers.Format.GeoRSS();
+            var features = format.read(request.responseText)
+            this.addFeatures(features);
+        };
+
     </script>
   </head>
   <body onload="init()">
