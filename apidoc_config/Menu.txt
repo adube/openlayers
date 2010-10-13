@@ -109,7 +109,6 @@ Group: OpenLayers  {
 
       File: Feature  (no auto-title, OpenLayers/Feature.js)
       File: Vector  (no auto-title, OpenLayers/Feature/Vector.js)
-      File: WFS  (no auto-title, OpenLayers/Feature/WFS.js)
       }  # Group: Feature
 
    Group: Filter  {
