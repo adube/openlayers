@@ -5,7 +5,7 @@ var map = new OpenLayers.Map( 'map' );
 var layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
         "http://vmap0.tiles.osgeo.org/wms/vmap0",
         {layers: 'basic', makeTheUrlLong: longText},
-        {tileOptions: {maxGetUrlLength: 2048}}
+        {tileOptions: {maxGetURLLength: 2048}}
 );
 map.addLayer(layer);
 map.zoomToMaxExtent();

@@ -305,15 +305,15 @@
         t.ok(control.urlMatches("http://host:80/wms?two=2&one=1"), "matches equivalent url");
 
         // give the control more urls to match from
-        control.layerUrls = ["http://a.host/wms", "http://b.host/wms"];
+        control.layerURLs = ["http://a.host/wms", "http://b.host/wms"];
 
         t.ok(control.urlMatches("http://host:80/wms?two=2&one=1"), "still matches equivalent url");
-        t.ok(control.urlMatches("http://a.host:80/wms"), "matches equivalent of first of layerUrls");
-        t.ok(control.urlMatches("http://b.host:80/wms"), "matches equivalent of second of layerUrls");
+        t.ok(control.urlMatches("http://a.host:80/wms"), "matches equivalent of first of layerURLs");
+        t.ok(control.urlMatches("http://b.host:80/wms"), "matches equivalent of second of layerURLs");
 
     }
 
-    function test_layerUrls(t) {
+    function test_layerURLs(t) {
 
         t.plan(4);
         var map = new OpenLayers.Map({
@@ -354,14 +354,14 @@
 
         // give control a list of urls to match
         log = {};
-        control.layerUrls = ["http://a.mirror/wms", "http://b.mirror/wms"];
+        control.layerURLs = ["http://a.mirror/wms", "http://b.mirror/wms"];
         control.getInfoForClick({xy: {x: 50, y: 50}});
         t.eq(log.options && log.options.url, "http://host/wms", "some match, request issued");
         t.eq(log.options && log.options.params["QUERY_LAYERS"].join(","), "a,b", "selected layers queried");
 
         // show that a layer can be matched if it has a urls array itself (first needs to be matched)
         log = {};
-        control.layerUrls = ["http://c.mirror/wms"];
+        control.layerURLs = ["http://c.mirror/wms"];
         control.getInfoForClick({xy: {x: 50, y: 50}});
         t.eq(log.options && log.options.params["QUERY_LAYERS"].join(","), "c", "layer with urls array can be queried");
 

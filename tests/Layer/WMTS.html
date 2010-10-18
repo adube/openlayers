@@ -214,7 +214,7 @@
                 map.addLayers([layer0,layer1]);
                 map.setCenter(new OpenLayers.LonLat(-97.0, 38.0), 1);
                 var tileurl0 = layer0.getURL(new OpenLayers.Bounds(-135.0, 0.0, -90.0, 45.0));
-                t.ok(OpenLayers.Util.isEquivalentUrl(tileurl0, "http://example.com/geowebcache-1.2.2/service/wmts/?LAYER=arcgis-online-wms&STYLE=foo&TILEMATRIXSET=arcgis-online-wgs84&FORMAT=image%2Fpng&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&TILEMATRIX=arcgis-online-wgs84%3A1&TILEROW=1&TILECOL=1"), "layer0 getURL returns correct url");
+                t.ok(OpenLayers.Util.isEquivalentURL(tileurl0, "http://example.com/geowebcache-1.2.2/service/wmts/?LAYER=arcgis-online-wms&STYLE=foo&TILEMATRIXSET=arcgis-online-wgs84&FORMAT=image%2Fpng&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&TILEMATRIX=arcgis-online-wgs84%3A1&TILEROW=1&TILECOL=1"), "layer0 getURL returns correct url");
 
                 var tileurl1 = layer1.getURL(new OpenLayers.Bounds(-180.0, 0.0, -90.0, 90.0));
                 t.eq(tileurl1, "http://example.com/wmts/1.0.0/world/blue_marble/arcgis_online/1/0/0.jpg", "layer1 getURL returns correct url");                                        

@@ -74,7 +74,7 @@
         map.destroy();
     }
     
-    function test_Marker_setUrl(t) {
+    function test_Marker_setURL(t) {
         t.plan( 2 );
         
         var map = new OpenLayers.Map("map");
@@ -96,7 +96,7 @@
 
         t.ok(OpenLayers.String.contains(marker.icon.imageDiv.firstChild.src, "img/marker.png"), "Marker.png is default URL");
         
-        marker.setUrl("http://example.com/broken.png");
+        marker.setURL("http://example.com/broken.png");
         t.eq(marker.icon.imageDiv.firstChild.src, "http://example.com/broken.png", "image source changes correctly.");
 
         map.destroy();

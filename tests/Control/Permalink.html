@@ -39,11 +39,11 @@
         if (!map.getCenter())  map.zoomToMaxExtent();
         map.addControl(control);
         map.pan(5, 0, {animate:false});
-        t.ok(OpenLayers.Util.isEquivalentUrl(OpenLayers.Util.getElement('permalink').href, location+"?zoom=2&lat=0&lon=1.75781&layers=BT"), 'pan sets permalink');
+        t.ok(OpenLayers.Util.isEquivalentURL(OpenLayers.Util.getElement('permalink').href, location+"?zoom=2&lat=0&lon=1.75781&layers=BT"), 'pan sets permalink');
         
         map.layers[1].setVisibility(false);
         
-        t.ok(OpenLayers.Util.isEquivalentUrl(OpenLayers.Util.getElement('permalink').href, location+"?zoom=2&lat=0&lon=1.75781&layers=BF"), 'setVisibility sets permalink');
+        t.ok(OpenLayers.Util.isEquivalentURL(OpenLayers.Util.getElement('permalink').href, location+"?zoom=2&lat=0&lon=1.75781&layers=BF"), 'setVisibility sets permalink');
     }
     function test_Control_Permalink_updateLinksBase (t) {
         t.plan( 2 );

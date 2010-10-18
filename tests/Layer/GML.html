@@ -42,13 +42,13 @@
         });
 
     }
-    function test_GML_setUrl(t) {
+    function test_GML_setURL(t) {
         t.plan(2);
         var layer = new OpenLayers.Layer.GML(name, gml);
         var map = new OpenLayers.Map("map");
         map.addLayer(layer);
         t.eq(layer.url, gml, "layer has correct original url");
-        layer.setUrl(gml2);
+        layer.setURL(gml2);
         t.eq(layer.url, gml2, "layer has correctly changed url");
     }
   </script>

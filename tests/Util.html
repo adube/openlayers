@@ -700,7 +700,7 @@
         t.eq(OpenLayers.Util.getImagesLocation().substr(OpenLayers.Util.getImagesLocation().length-4,4), "img/", "ImgPath works as expected when set to ''."); 
     }
 
-    function test_Util_isEquivalentUrl(t) {
+    function test_Util_isEquivalentURL(t) {
         t.plan(9);
         
         var url1, url2, options;
@@ -710,21 +710,21 @@
         url1 = "http://www.openlayers.org";
         url2 = "HTTP://WWW.OPENLAYERS.ORG";
 
-        t.ok(OpenLayers.Util.isEquivalentUrl(url1, url2), "default ignoreCase works"); 
+        t.ok(OpenLayers.Util.isEquivalentURL(url1, url2), "default ignoreCase works"); 
 
   //ARGS
 
         url1 = "http://www.openlayers.org?foo=5;bar=6";
         url2 = "http://www.openlayers.org?bar=6;foo=5";
 
-        t.ok(OpenLayers.Util.isEquivalentUrl(url1, url2), "shuffled arguments works"); 
+        t.ok(OpenLayers.Util.isEquivalentURL(url1, url2), "shuffled arguments works"); 
 
   //PORT
 
         url1 = "http://www.openlayers.org:80";
         url2 = "http://www.openlayers.org";
 
-        t.ok(OpenLayers.Util.isEquivalentUrl(url1, url2), "default ignorePort80 works"); 
+        t.ok(OpenLayers.Util.isEquivalentURL(url1, url2), "default ignorePort80 works"); 
 
         options = {
             'ignorePort80': false
@@ -732,7 +732,7 @@
         url1 = "http://www.openlayers.org:80";
         url2 = "http://www.openlayers.org:50";
 
-        t.ok(!OpenLayers.Util.isEquivalentUrl(url1, url2, options), "port check works"); 
+        t.ok(!OpenLayers.Util.isEquivalentURL(url1, url2, options), "port check works"); 
 
 
   //HASH
@@ -740,33 +740,33 @@
         url1 = "http://www.openlayers.org#barf";
         url2 = "http://www.openlayers.org";
 
-        t.ok(OpenLayers.Util.isEquivalentUrl(url1, url2), "default ignoreHash works"); 
+        t.ok(OpenLayers.Util.isEquivalentURL(url1, url2), "default ignoreHash works"); 
         options = {
             'ignoreHash': false
         }        
-        t.ok(!OpenLayers.Util.isEquivalentUrl(url1, url2, options), "ignoreHash FALSE works"); 
+        t.ok(!OpenLayers.Util.isEquivalentURL(url1, url2, options), "ignoreHash FALSE works"); 
 
   //PROTOCOL
 
         url1 = "http://www.openlayers.org";
         url2 = "ftp://www.openlayers.org";
 
-        t.ok(!OpenLayers.Util.isEquivalentUrl(url1, url2), "default ignoreHash works"); 
+        t.ok(!OpenLayers.Util.isEquivalentURL(url1, url2), "default ignoreHash works"); 
 
 
   //PATHNAME
         url1 = "foo.html?bar=now#go";
         url2 = "../tests/../tests/foo.html?bar=now#go";
 
-        t.ok(OpenLayers.Util.isEquivalentUrl(url1, url2), "relative vs. absolute paths works");
+        t.ok(OpenLayers.Util.isEquivalentURL(url1, url2), "relative vs. absolute paths works");
         
         url1 = "/foo/bar";
         url2 = new Array(window.location.pathname.split("/").length-1).join("../")+"foo/bar";
         
-        t.ok(OpenLayers.Util.isEquivalentUrl(url1, url2), "absolute and relative path without host works for "+url2) 
+        t.ok(OpenLayers.Util.isEquivalentURL(url1, url2), "absolute and relative path without host works for "+url2) 
     }
     
-    function test_createUrlObject(t) {
+    function test_createURLObject(t) {
         
         var cases = [{
             url: "http://example.com/",
@@ -870,7 +870,7 @@
         var c, obj;
         for(var i=0; i<cases.length; ++i) {
             c = cases[i];
-            obj = OpenLayers.Util.createUrlObject(c.url, c.opt);
+            obj = OpenLayers.Util.createURLObject(c.url, c.opt);
             t.eq(obj, c.exp, i + ": '" + c.url + "'");
         }
         

@@ -18,7 +18,7 @@
         t.plan( 3 );
         map   = new OpenLayers.Map('map');
         var bar = new Array(205).join("1234567890");
-        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic', foo: bar}, {tileOptions: {maxGetUrlLength: 2048}}); 
+        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic', foo: bar}, {tileOptions: {maxGetURLLength: 2048}}); 
         map.addLayer(layer);
 
         var tile = layer.addTile(bounds, position);
@@ -31,10 +31,10 @@
         tile.positionImage();
         t.eq(tile.imgDiv.nodeName.toLowerCase(), "img", "IMG used for short URL");
         
-        tile.maxGetUrlLength = 0;
+        tile.maxGetURLLength = 0;
         tile.renderTile();
         tile.positionImage();
-        t.eq(tile.imgDiv.firstChild.nodeName.toLowerCase(), "iframe", "IFrame used when maxGetUrlLength is 0");
+        t.eq(tile.imgDiv.firstChild.nodeName.toLowerCase(), "iframe", "IFrame used when maxGetURLLength is 0");
         
         tile.destroy();
         layer.destroy();
@@ -45,7 +45,7 @@
         t.plan( 1 );
         
         map   = new OpenLayers.Map('map');
-        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetUrlLength: 0}}); 
+        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetURLLength: 0}}); 
         map.addLayer(layer);  
         tile = layer.addTile(bounds, position);
         tile.draw();
@@ -63,7 +63,7 @@
         t.plan( 4 );
 
         map   = new OpenLayers.Map('map');
-        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetUrlLength: 0}}); 
+        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetURLLength: 0}}); 
         map.addLayer(layer);  
         tile = layer.addTile(bounds, position);
         tile.url = layer.getURL(bounds);
@@ -86,7 +86,7 @@
         t.plan( 3 );
 
         map   = new OpenLayers.Map('map');
-        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetUrlLength: 0}}); 
+        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetURLLength: 0}}); 
         map.addLayer(layer);  
         var tile = layer.addTile(bounds, position);
         tile.renderTile();
@@ -111,7 +111,7 @@
         t.plan( 8 );
         
         map   = new OpenLayers.Map('map');
-        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetUrlLength: 0}}); 
+        layer = new OpenLayers.Layer.WMS(name, wmsUrl, {layers: 'basic'}, {tileOptions: {maxGetURLLength: 0}}); 
         map.addLayer(layer);  
         var tile = layer.addTile(bounds, position);
         var iFrame = tile.createIFrame();
@@ -147,7 +147,7 @@
         var newLayer = new OpenLayers.Layer.WMS("Name",
                      "http://labs.metacarta.com/TESTURL",
                      tParams,
-                     {tileSize: size, tileOptions: {maxGetUrlLength: 0}});  
+                     {tileSize: size, tileOptions: {maxGetURLLength: 0}});  
         map = new OpenLayers.Map('map'); 
         map.addLayer(newLayer);  
         tile = newLayer.addTile(bounds, position);
