@@ -106,7 +106,7 @@
         tParams = { layers: 'basic', 
                    format: 'image/png'};
         
-        t.plan( 12 );
+        t.plan( 11 );
 
   // without ?        
         tUrl = "http://octo.metacarta.com/cgi-bin/mapserv";
@@ -158,12 +158,6 @@
         str = layer.getFullRequestString( { chicken: 6, 
                                             layers:"road" } );
         t.eq(str, tUrl + OpenLayers.Util.getParameterString({chicken: 6, layers: "road"}), "getFullRequestString() works for layer with null params passing in new params");
-
-  // with specified altUrl parameter
-        tUrl = "http://octo.metacarta.com/cgi-bin/mapserv";
-        layer = new OpenLayers.Layer.HTTPRequest(name, "chicken", tParams, null);
-        str = layer.getFullRequestString(null, tUrl);
-        t.eq(str, tUrl + '?' + OpenLayers.Util.getParameterString(tParams), "getFullRequestString() works with specified altUrl parameter");
   
   // single url object        
         tUrl = ["http://octo.metacarta.com/cgi-bin/mapserv"];
